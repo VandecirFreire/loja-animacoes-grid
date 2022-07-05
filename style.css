@@ -1,0 +1,432 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  --before-bg:hsl(218, 17%, 62%);
+  --tarja-bg:hsl(275, 18%, 79%);
+  --tarja-color:hsl(0, 0%, 100%);
+  --mobile-text-color:hsl(274, 84%, 12%);
+  --desktop-text-color:hsl(0, 0%, 100%);
+
+  --span-color:hsl(232, 17%, 35%);
+  --span-bg: hsl(312, 91%, 96%);
+  --card-border:2rem;
+
+  --body-bg:hsl(233, 100%, 97%);
+ 
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem; /* 16 pixels*/
+  width: 100%;
+  height: 100%;
+
+  background: #E5E5E5;
+}
+
+
+h1, span{
+  font-family: 'Staatliches', sans-serif;
+  font-style: normal;
+}
+
+
+p span, p{
+  font-family: 'Palanquin', sans-serif;
+}
+
+/*====== CONFIGURAÇÕES GLOBAIS ===================================*/
+
+
+main{
+  width: clamp(38.4rem, 30rem + 70vw, 140rem);
+  margin: 0 auto;
+
+  text-align: center;
+
+  position: relative;
+}
+
+main::before{
+  content: '';
+  min-width: 100%;
+  height: 30.9rem;
+  
+  background: var(--before-bg);
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  z-index: 0;
+ 
+}
+
+
+/*============================= MAIN =-===============*/
+
+
+.page{
+  display: grid;
+  gap: 6.3rem;
+  background: var(--body-bg);
+}
+
+
+.page header{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.9rem;
+}
+
+.page header .logo{
+  margin-top: 3.2rem;
+}
+
+.page header .tarja-title{
+  max-width: 100%;
+  height: 4.9rem;
+  background:var(--tarja-bg);
+  color: var(--tarja-color);
+  
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.page header .tarja-title h1{
+  font-size: 4.0rem;
+  line-height: 3.4rem;
+
+  letter-spacing: 0.05em;
+  cursor: pointer;
+
+  text-shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.25);
+  transition: all 200ms ease;
+}
+
+.page header .tarja-title h1:hover{
+  text-shadow: 0px 10px 2px hsla(0, 0%, 0%, 0.25);
+  letter-spacing: 1rem;
+}
+
+.page header .text{
+  max-width: 30.5rem;
+  margin: 1.4rem auto 6.3rem;
+}
+
+.page header .text p{
+  font-size: 2rem;
+  line-height: 2rem;
+  height: 7.5rem;
+
+  color: var(--mobile-text-color);
+
+ 
+}
+
+.page header .text p span{ /* Sumir no mobile e aparecer no desktop*/
+  display: none;
+}
+
+.page header .logo svg:hover{
+  animation: logo-spin 300ms ease forwards ;
+}
+
+@keyframes logo-spin{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/* ======================= HEADER ====================================*/
+
+
+
+.content{
+  display: grid;
+  gap: 3.2rem;
+  width: 100%;
+}
+
+.content .card{
+  width: 100%;
+  height: 100%;
+
+  margin: 0 auto;
+  padding: 0 1rem 0;
+
+  border-radius: var(--card-border);
+
+  transition: all 300ms ease;
+  animation: top-down 700ms 300ms ease backwards;
+
+}
+
+.content .card:hover{
+  box-shadow: 10px 10px 10px hsla(0, 0%, 0%, 0.25);
+}
+
+.content #small-card1, #tall-card1, #small-card2, #tall-card2, #small-card3, #tall-card3{
+  position: relative;
+}
+
+.content #small-card1 span, #tall-card1 span, #small-card2 span, #tall-card2 span, #small-card3 span, #tall-card3 span{
+  position: absolute;
+  
+}
+
+.content #small-card3, #tall-card3{
+  display: none; /*Desaparecer com as duas cards do mobile*/
+}
+
+.content .card span{
+  top: 0;
+  right: 0;
+  color: var(--span-color);
+  background: var(--span-bg);
+
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  z-index: 1;
+
+  width: 11.2rem;
+  height: 3.5rem;
+  margin: 1.6rem 1.6rem 0 0;
+  border-radius: var(--card-border);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: span-scale 400ms 600ms ease backwards ;
+  cursor: pointer;
+}
+
+
+.content .card img{
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: var(--card-border);
+
+  filter: brightness(0.8);
+  transition: all 300ms ease;
+}
+
+.content .card img:hover{
+  filter: brightness(1);
+  border-left: 3rem solid transparent;
+  border-right: 3rem solid transparent;
+  border-bottom: 3rem solid hsla(0, 0%, 0%, 0.10);
+
+}
+
+
+.footer{
+  display: none;
+}
+/* 0%{
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+  }*/
+
+@keyframes span-scale{
+  0%{
+    opacity: 0;
+    
+  }
+
+ 100%{
+   transform: rotate(360deg);
+ }
+}
+
+
+/* ======================= CONTENT CARDS ====================================*/
+
+
+
+
+@media (min-width: 500px){
+
+  .content{
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
+  }
+
+  .content .card{
+    animation: top-down 700ms 300ms ease backwards;
+  }
+  
+}
+
+
+@media (min-width: 800px){
+
+  .content #small-card3, #tall-card3{
+    display: inline-flex;
+  }
+
+  .content{
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+  }
+
+  .content .card{
+    animation: top-down 700ms 300ms ease backwards;
+  }
+}
+
+
+@media (min-width: 1000px){
+
+  .page{
+    grid-template-columns: 25% 1fr;
+  }
+
+  .page header{
+    background:var(--before-bg);
+  }
+
+  .page header .tarja-title{
+    height: 7rem;
+  }
+
+  .page header .text p span{
+    display: inline-flex;
+    color: var(--desktop-text-color);
+  }
+  .page header .text p {
+    color: var(--desktop-text-color);
+    line-height: 2.0rem;
+    font-style: normal;
+  }
+
+  .page header .text{
+    transition: all 300ms ease;
+  }
+  .page header .text:hover{
+    letter-spacing: 0.1rem;
+  }
+
+ 
+
+
+  main{
+    margin: 0;
+    width: 100%;
+  }
+
+  header{
+    z-index: 2;
+  }
+
+  main::before{
+    display: none;
+  }
+
+  .content-card{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+
+  .content{
+    max-width: 100rem;
+    
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-areas: 'A B C'
+                         'D B E'
+                         'D F E';
+  }
+
+  .content #small-card1{
+    grid-area: A;
+    animation: in-out 800ms 100ms ease backwards;
+  }
+
+  .content #tall-card1{
+    grid-area: B;
+    animation: in-out 800ms 200ms ease backwards;
+    
+  }
+
+  .content #small-card2{
+    grid-area: C;
+    animation: in-out 800ms 300ms ease backwards;
+  }
+
+  .content #tall-card2{
+    grid-area: D;
+    animation: in-out 800ms 400ms ease backwards;
+  }
+
+  .content #small-card3{
+    grid-area: F;
+    animation: in-out 800ms 500ms ease backwards;
+  }
+
+  .content #tall-card3{
+    grid-area: E;
+    animation: in-out 800ms 600ms ease backwards;
+  }
+
+
+  .footer{
+    display: block;
+    max-width: 59.2rem;
+  }
+  .footer a{
+    text-decoration: none;
+    color: hsla(274, 84%, 12%, 1);
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+  }
+
+} 
+  
+
+/* ======================= SCREENS ====================================*/
+
+
+@keyframes in-out{
+  0%{
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100%{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes top-down{
+  0%{
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
