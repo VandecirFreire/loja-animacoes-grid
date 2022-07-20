@@ -1,6 +1,6 @@
 # loja-animacoes-grid
 
-## Site de uma Gelateria
+## Site de uma Gelateria, criado com HTML e CSS, levando sempre first mobile.
 
 vandecirfreire.github.io/loja-animacoes-grid/
 
